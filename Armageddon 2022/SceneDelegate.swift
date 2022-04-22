@@ -11,12 +11,36 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+    
+        self.window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window?.windowScene = windowScene
+        window?.rootViewController = createTabBarController()
+        window?.makeKeyAndVisible()
+        
+    }
+    //MARK: TabBarController
+    
+    func createFeedViewController() -> UINavigationController {
+        let feedViewController = AsteroidViewController()
+        feedViewController.title = "Астероиды"
+        feedViewController.tabBarItem = UITabBarItem(title: "Астероиды", image: UIImage(systemName: "doc.richtext"), tag: 0)
+        return UINavigationController(rootViewController: feedViewController)
+    }
+    func createProfileViewController() -> UINavigationController {
+        let profileViewController = DestructionViewController()
+        profileViewController.title = "Уничтожение"
+        profileViewController.tabBarItem = UITabBarItem(title: "Уничтожение", image: UIImage(systemName: "person.circle"), tag: 1)
+        return UINavigationController(rootViewController: profileViewController)
+    }
+    func createTabBarController() -> UITabBarController {
+        let tabBarController = UITabBarController()
+        UITabBar.appearance().backgroundColor = .white
+        tabBarController.viewControllers = [self.createFeedViewController(), self.createProfileViewController()]
+        return tabBarController
+
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

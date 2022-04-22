@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		EF084F31280DEEDE00F86DDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF084F30280DEEDE00F86DDC /* AppDelegate.swift */; };
 		EF084F33280DEEDE00F86DDC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF084F32280DEEDE00F86DDC /* SceneDelegate.swift */; };
-		EF084F35280DEEDE00F86DDC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF084F34280DEEDE00F86DDC /* ViewController.swift */; };
-		EF084F38280DEEDE00F86DDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF084F36280DEEDE00F86DDC /* Main.storyboard */; };
 		EF084F3A280DEEDF00F86DDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF084F39280DEEDF00F86DDC /* Assets.xcassets */; };
 		EF084F3D280DEEDF00F86DDC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF084F3B280DEEDF00F86DDC /* LaunchScreen.storyboard */; };
+		EF2BEF25280ECDF200C7AC95 /* AsteroidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BEF24280ECDF200C7AC95 /* AsteroidViewController.swift */; };
+		EF2BEF27280ECE0900C7AC95 /* DestructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BEF26280ECE0900C7AC95 /* DestructionViewController.swift */; };
+		EF9EB68B28114FFA0027C2BF /* TVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9EB68A28114FFA0027C2BF /* TVCell.swift */; };
+		EFA985C82812AD7B00293721 /* TVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFA985C72812AD7B00293721 /* TVCell.xib */; };
+		EFDD2E82280FF36500863458 /* Asteroid.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD2E81280FF36500863458 /* Asteroid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EF084F2D280DEEDE00F86DDC /* Armageddon 2022.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Armageddon 2022.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF084F30280DEEDE00F86DDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EF084F32280DEEDE00F86DDC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EF084F34280DEEDE00F86DDC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EF084F37280DEEDE00F86DDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EF084F39280DEEDF00F86DDC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EF084F3C280DEEDF00F86DDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EF084F3E280DEEDF00F86DDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF2BEF24280ECDF200C7AC95 /* AsteroidViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidViewController.swift; sourceTree = "<group>"; };
+		EF2BEF26280ECE0900C7AC95 /* DestructionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestructionViewController.swift; sourceTree = "<group>"; };
+		EF9EB68A28114FFA0027C2BF /* TVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCell.swift; sourceTree = "<group>"; };
+		EFA985C72812AD7B00293721 /* TVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVCell.xib; sourceTree = "<group>"; };
+		EFDD2E81280FF36500863458 /* Asteroid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asteroid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +64,48 @@
 			children = (
 				EF084F30280DEEDE00F86DDC /* AppDelegate.swift */,
 				EF084F32280DEEDE00F86DDC /* SceneDelegate.swift */,
-				EF084F34280DEEDE00F86DDC /* ViewController.swift */,
-				EF084F36280DEEDE00F86DDC /* Main.storyboard */,
+				EF2BEF2D280F15CF00C7AC95 /* Model */,
+				EF2BEF2A280F0E5B00C7AC95 /* Controllers */,
+				EF350949280EBC69005694A8 /* Resource */,
+			);
+			path = "Armageddon 2022";
+			sourceTree = "<group>";
+		};
+		EF27D72628131569004D5B80 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				EF9EB68A28114FFA0027C2BF /* TVCell.swift */,
+				EFA985C72812AD7B00293721 /* TVCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		EF2BEF2A280F0E5B00C7AC95 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EF2BEF24280ECDF200C7AC95 /* AsteroidViewController.swift */,
+				EF2BEF26280ECE0900C7AC95 /* DestructionViewController.swift */,
+				EF27D72628131569004D5B80 /* Cell */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		EF2BEF2D280F15CF00C7AC95 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EFDD2E81280FF36500863458 /* Asteroid.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EF350949280EBC69005694A8 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
 				EF084F39280DEEDF00F86DDC /* Assets.xcassets */,
 				EF084F3B280DEEDF00F86DDC /* LaunchScreen.storyboard */,
 				EF084F3E280DEEDF00F86DDC /* Info.plist */,
 			);
-			path = "Armageddon 2022";
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,9 +166,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFA985C82812AD7B00293721 /* TVCell.xib in Resources */,
 				EF084F3D280DEEDF00F86DDC /* LaunchScreen.storyboard in Resources */,
 				EF084F3A280DEEDF00F86DDC /* Assets.xcassets in Resources */,
-				EF084F38280DEEDE00F86DDC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +179,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF084F35280DEEDE00F86DDC /* ViewController.swift in Sources */,
+				EF9EB68B28114FFA0027C2BF /* TVCell.swift in Sources */,
 				EF084F31280DEEDE00F86DDC /* AppDelegate.swift in Sources */,
+				EF2BEF25280ECDF200C7AC95 /* AsteroidViewController.swift in Sources */,
+				EF2BEF27280ECE0900C7AC95 /* DestructionViewController.swift in Sources */,
+				EFDD2E82280FF36500863458 /* Asteroid.swift in Sources */,
 				EF084F33280DEEDE00F86DDC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,14 +191,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		EF084F36280DEEDE00F86DDC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EF084F37280DEEDE00F86DDC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EF084F3B280DEEDF00F86DDC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -289,12 +325,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TMH7W47KB5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Armageddon 2022/Info.plist";
+				INFOPLIST_FILE = "Armageddon 2022/Resource/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -317,12 +353,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TMH7W47KB5;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Armageddon 2022/Info.plist";
+				INFOPLIST_FILE = "Armageddon 2022/Resource/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
