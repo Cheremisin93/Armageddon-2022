@@ -11,10 +11,12 @@
 		EF084F33280DEEDE00F86DDC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF084F32280DEEDE00F86DDC /* SceneDelegate.swift */; };
 		EF084F3A280DEEDF00F86DDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF084F39280DEEDF00F86DDC /* Assets.xcassets */; };
 		EF084F3D280DEEDF00F86DDC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF084F3B280DEEDF00F86DDC /* LaunchScreen.storyboard */; };
+		EF27D72928134208004D5B80 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF27D72828134208004D5B80 /* FilterViewController.swift */; };
 		EF2BEF25280ECDF200C7AC95 /* AsteroidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BEF24280ECDF200C7AC95 /* AsteroidViewController.swift */; };
 		EF2BEF27280ECE0900C7AC95 /* DestructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BEF26280ECE0900C7AC95 /* DestructionViewController.swift */; };
 		EF9EB68B28114FFA0027C2BF /* TVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9EB68A28114FFA0027C2BF /* TVCell.swift */; };
 		EFA985C82812AD7B00293721 /* TVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFA985C72812AD7B00293721 /* TVCell.xib */; };
+		EFBEB98B2813EA3B00F868C5 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EFBEB9892813EA3B00F868C5 /* CoreDataModel.xcdatamodeld */; };
 		EFDD2E82280FF36500863458 /* Asteroid.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD2E81280FF36500863458 /* Asteroid.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,10 +27,12 @@
 		EF084F39280DEEDF00F86DDC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EF084F3C280DEEDF00F86DDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EF084F3E280DEEDF00F86DDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF27D72828134208004D5B80 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		EF2BEF24280ECDF200C7AC95 /* AsteroidViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidViewController.swift; sourceTree = "<group>"; };
 		EF2BEF26280ECE0900C7AC95 /* DestructionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestructionViewController.swift; sourceTree = "<group>"; };
 		EF9EB68A28114FFA0027C2BF /* TVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCell.swift; sourceTree = "<group>"; };
 		EFA985C72812AD7B00293721 /* TVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVCell.xib; sourceTree = "<group>"; };
+		EFBEB98A2813EA3B00F868C5 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		EFDD2E81280FF36500863458 /* Asteroid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asteroid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,11 +66,11 @@
 		EF084F2F280DEEDE00F86DDC /* Armageddon 2022 */ = {
 			isa = PBXGroup;
 			children = (
-				EF084F30280DEEDE00F86DDC /* AppDelegate.swift */,
-				EF084F32280DEEDE00F86DDC /* SceneDelegate.swift */,
+				EF27D727281334A0004D5B80 /* Delegate */,
 				EF2BEF2D280F15CF00C7AC95 /* Model */,
 				EF2BEF2A280F0E5B00C7AC95 /* Controllers */,
 				EF350949280EBC69005694A8 /* Resource */,
+				EFBEB9892813EA3B00F868C5 /* CoreDataModel.xcdatamodeld */,
 			);
 			path = "Armageddon 2022";
 			sourceTree = "<group>";
@@ -80,10 +84,20 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		EF27D727281334A0004D5B80 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				EF084F30280DEEDE00F86DDC /* AppDelegate.swift */,
+				EF084F32280DEEDE00F86DDC /* SceneDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
 		EF2BEF2A280F0E5B00C7AC95 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				EF2BEF24280ECDF200C7AC95 /* AsteroidViewController.swift */,
+				EF27D72828134208004D5B80 /* FilterViewController.swift */,
 				EF2BEF26280ECE0900C7AC95 /* DestructionViewController.swift */,
 				EF27D72628131569004D5B80 /* Cell */,
 			);
@@ -179,11 +193,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF27D72928134208004D5B80 /* FilterViewController.swift in Sources */,
 				EF9EB68B28114FFA0027C2BF /* TVCell.swift in Sources */,
 				EF084F31280DEEDE00F86DDC /* AppDelegate.swift in Sources */,
 				EF2BEF25280ECDF200C7AC95 /* AsteroidViewController.swift in Sources */,
 				EF2BEF27280ECE0900C7AC95 /* DestructionViewController.swift in Sources */,
 				EFDD2E82280FF36500863458 /* Asteroid.swift in Sources */,
+				EFBEB98B2813EA3B00F868C5 /* CoreDataModel.xcdatamodeld in Sources */,
 				EF084F33280DEEDE00F86DDC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,6 +410,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EFBEB9892813EA3B00F868C5 /* CoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EFBEB98A2813EA3B00F868C5 /* CoreDataModel.xcdatamodel */,
+			);
+			currentVersion = EFBEB98A2813EA3B00F868C5 /* CoreDataModel.xcdatamodel */;
+			path = CoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EF084F25280DEEDE00F86DDC /* Project object */;
 }

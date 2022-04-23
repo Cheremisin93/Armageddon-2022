@@ -13,15 +13,26 @@ class AsteroidViewController: UIViewController {
     var tableView = UITableView()
     let identifier = "cell"
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         parseJSON()
         createTableView()
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "SF Symbol"), style: .plain, target: self, action: #selector(filterObject))
+        
+    }
+    
+    @objc dynamic func filterObject() {
+        let filterView = FilterViewController()
+        self.navigationController?.pushViewController(filterView, animated: true)
     }
     
     private func parseJSON() {
         let url = "https://api.nasa.gov/neo/rest/v1/feed?start_date=2022-04-08&end_date=2022-04-15&api_key=w6JgeuisSazG6hoclBnbZyfmC82QeEXwQIVXLQdw"
         guard let url = URL(string: url) else { return }
+        
+        
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
                 print(error)
@@ -44,6 +55,7 @@ class AsteroidViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.tableView.separatorStyle = .none
         view.addSubview(tableView)
     }
     
@@ -53,6 +65,7 @@ class AsteroidViewController: UIViewController {
         let oldDate = olDateFormatter.date(from: date)
         let convertDateFormatter = DateFormatter()
         convertDateFormatter.dateFormat = "d MMMM yyyy"
+        convertDateFormatter.locale = Locale(identifier: "ru_RU")
         
         return convertDateFormatter.string(from: oldDate!)
     }
@@ -68,7 +81,7 @@ extension AsteroidViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let array = (self.result?.nearEarthObjects.keys)!.sorted()
-        return array[section]
+        return dateForm(date: array[section])
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -95,9 +108,11 @@ extension AsteroidViewController: UITableViewDelegate, UITableViewDataSource {
             cell.asteroidImage.image = UIImage(named: "bigA")
         } else {
             cell.isHazardousLabel.text = "Не опасен"
+            cell.isHazardousLabel.textColor = .black
             cell.imageAsteroid.image = UIImage(named: "small")
             cell.asteroidImage.image = UIImage(named: "smallA")
         }
+        
         
         return cell
     }
@@ -107,8 +122,7 @@ extension AsteroidViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return result?.nearEarthObjects.keys.count ?? 0
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
-    }
+    
+    
     
 }

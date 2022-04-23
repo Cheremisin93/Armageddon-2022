@@ -18,6 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         window?.rootViewController = createTabBarController()
+        window?.overrideUserInterfaceStyle = .light
         window?.makeKeyAndVisible()
         
     }
@@ -25,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func createFeedViewController() -> UINavigationController {
         let feedViewController = AsteroidViewController()
-        feedViewController.title = "Астероиды"
+        feedViewController.title = "Армагеддон 2022"
         feedViewController.tabBarItem = UITabBarItem(title: "Астероиды", image: UIImage(systemName: "doc.richtext"), tag: 0)
         return UINavigationController(rootViewController: feedViewController)
     }

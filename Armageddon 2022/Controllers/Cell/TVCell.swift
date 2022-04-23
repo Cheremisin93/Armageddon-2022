@@ -8,7 +8,20 @@
 
 import UIKit
 
-class TVCell: UITableViewCell {
+protocol MyTableViewCellDelegate {
+    func destroiQueue(object: NearEarthObject)
+}
+
+
+class TVCell: UITableViewCell, MyTableViewCellDelegate {
+    
+    var delegate: MyTableViewCellDelegate?
+    
+    func destroiQueue(object: NearEarthObject) {
+        
+    }
+    
+    
     
     @IBOutlet weak var backgroundCell: UIView!
     @IBOutlet weak var imageAsteroid: UIImageView!
@@ -28,18 +41,18 @@ class TVCell: UITableViewCell {
     
     private func setupDesign() {
 
-        backgroundCell.layer.cornerRadius = 25
+        backgroundCell.layer.cornerRadius = 20
         backgroundCell.layer.shadowColor = UIColor.black.cgColor
         backgroundCell.layer.shadowOffset = CGSize(width: 0, height: 3)
         backgroundCell.layer.shadowOpacity = 0.3
         destroyButton.setTitle("Уничтожить", for: .normal)
         destroyButton.layer.cornerRadius = 12
         asteroidImage.contentMode = .topLeft
-        imageAsteroid.roundCorners([.topRight, .topLeft], radius: 25)
+        imageAsteroid.roundCorners([.topRight, .topLeft], radius: 20)
         
     }
     @IBAction func destroyButtonTapped(_ sender: UIButton) {
-        
+//        delegate?.destroiQueue(object: )
     }
     
     
