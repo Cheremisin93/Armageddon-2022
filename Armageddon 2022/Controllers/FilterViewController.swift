@@ -13,12 +13,15 @@ class FilterViewController: UIViewController {
     var switchDanger = UISwitch()
     var backView: UIView?
     let label = UILabel()
+    let asterVC = AsteroidViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         createView()
         createlabel()
         createSwitch()
+        
     }
     private func createView() {
         backView = UIView(frame: CGRect(x: 20, y: 110, width: view.frame.width - 40, height: 60))
@@ -39,9 +42,24 @@ class FilterViewController: UIViewController {
     }
     @objc dynamic func filterDanger(filterTarget: UISwitch) {
         
+        
+
         if filterTarget.isOn {
-            
+//            for item in asterVC.asteroids {
+//                if item.isPotentiallyHazardousAsteroid == false {
+//                    try! asterVC.realm.write({
+//                        asterVC.realm.delete(item)
+//                    })
+//                }
+//            }
+            print("SwitchON")
+        } else {
+            print("SwitchOFF")
         }
+
+            asterVC.tableView.reloadData()
+        
+        
     }
     
     

@@ -28,6 +28,7 @@ struct NearEarthObject: Codable {
         case isPotentiallyHazardousAsteroid = "is_potentially_hazardous_asteroid"
         case closeApproachData = "close_approach_data"
     }
+    
 }
 struct CloseApproachDate: Codable {
     let closeApproachDateFull: String
