@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -14,9 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
-    
-        
-        
+
         self.window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         window?.rootViewController = createTabBarController()
@@ -26,24 +25,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     //MARK: TabBarController
     
-    func createFeedViewController() -> UINavigationController {
-        let feedViewController = AsteroidViewController()
-        feedViewController.title = "Армагеддон 2022"
-        feedViewController.tabBarItem = UITabBarItem(title: "Астероиды", image: UIImage(systemName: "doc.richtext"), tag: 0)
-        return UINavigationController(rootViewController: feedViewController)
+    func createAteroidsViewController() -> UINavigationController {
+        let asteroidsViewController = AsteroidViewController()
+        asteroidsViewController.title = "Армагеддон 2022"
+        asteroidsViewController.tabBarItem = UITabBarItem(title: "Астероиды", image: UIImage(systemName: "doc.richtext"), tag: 0)
+        return UINavigationController(rootViewController: asteroidsViewController)
     }
-    func createProfileViewController() -> UINavigationController {
-        let profileViewController = DestructionViewController()
-        profileViewController.title = "Уничтожение"
-        profileViewController.tabBarItem = UITabBarItem(title: "Уничтожение", image: UIImage(systemName: "person.circle"), tag: 1)
-        return UINavigationController(rootViewController: profileViewController)
+    func createDestroyViewController() -> UINavigationController {
+        let destroyViewController = DestructionViewController()
+        destroyViewController.title = "Уничтожение"
+        destroyViewController.tabBarItem = UITabBarItem(title: "Уничтожение", image: UIImage(systemName: "person.circle"), tag: 1)
+        destroyViewController.viewDidLoad()
+        let count = destroyViewController.arrayOfDestroy.count
+        destroyViewController.tabBarItem.badgeValue = "\(count)"
+        return UINavigationController(rootViewController: destroyViewController)
     }
     func createTabBarController() -> UITabBarController {
         let tabBarController = UITabBarController()
         UITabBar.appearance().backgroundColor = .white
-        tabBarController.viewControllers = [self.createFeedViewController(), self.createProfileViewController()]
+        tabBarController.viewControllers = [self.createAteroidsViewController(), self.createDestroyViewController()]
+        
+        
+        
         return tabBarController
-
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

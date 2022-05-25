@@ -15,14 +15,12 @@ struct Objects: Codable {
     }
 }
 struct NearEarthObject: Codable {
-    let id: String
     let name: String
     let estimatedDiameter: EstimatedDiameter
     let isPotentiallyHazardousAsteroid: Bool
     let closeApproachData: [CloseApproachDate]
     
     enum CodingKeys: String, CodingKey {
-        case id
         case name
         case estimatedDiameter = "estimated_diameter"
         case isPotentiallyHazardousAsteroid = "is_potentially_hazardous_asteroid"
@@ -47,6 +45,7 @@ struct EstimatedDiameter: Codable {
 }
 struct Meters: Codable {
     let estimatedDiameterMin, estimatedDiameterMax: Double
+    
     enum CodingKeys: String, CodingKey {
         case estimatedDiameterMin = "estimated_diameter_min"
         case estimatedDiameterMax = "estimated_diameter_max"

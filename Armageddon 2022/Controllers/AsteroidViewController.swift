@@ -10,9 +10,13 @@ import RealmSwift
 
 class AsteroidViewController: UIViewController {
     
-//    var asteroids: Results<NearItems>!
     let realm = try! Realm()
     
+    
+    var tag = 0
+    var switchDanger = false
+    
+    var asteroids: Results<NearItems>!
     var result: Objects?
     
     var tableView = UITableView()
@@ -30,100 +34,52 @@ class AsteroidViewController: UIViewController {
     }
     var dateEnd: String {
         get {
-            
-            return "2022-05-21"
+            var dateComponent = DateComponents()
+            dateComponent.day = 7
+            let currentDate = Date()
+            let futureDate = Calendar.current.date(byAdding: dateComponent, to: currentDate)
+            let olDateFormatter = DateFormatter()
+            olDateFormatter.dateFormat = "yyyy-MM-dd"
+            let oldDate = olDateFormatter.string(from: futureDate!)
+            return oldDate
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         createTableView()
         createNavigationMenu()
         
         navigationController?.navigationBar.prefersLargeTitles = true
+        asteroids = realm.objects(NearItems.self)
         
-//        var asteroids = realm.objects(DataManager.obtainAsters().self)
-        
-//        if asteroids.count == 0 {
-//            parseJSON()
-//            addActivityIndicator()
-//        }
-        
-    }
-    
-    
-    private func createNavigationMenu() {
-        let menu = UIMenu(title: "", children: [
-            UIAction(title: "Фильтр", image: UIImage(named: "filter"), handler: { [unowned self] _ in self.filterObject() }),
-            UIAction(title: "Обновить таблицу", image: UIImage(named: "reload"), handler: { [unowned self] _ in self.updateTableView() }),
-            UIAction(title: "Установить дату", image: UIImage(named: "weekly"), handler: { [unowned self] _ in self.changeDate() })
-        ])
-        let saveButton = UIBarButtonItem(image: UIImage(named: "SF Symbol"), menu: menu)
-        navigationItem.rightBarButtonItem = saveButton
-    }
-    
-    @objc func changeDate() {
-        let alert = UIAlertController(title: "Введите дату", message: "Измените дату", preferredStyle: .alert)
-        
-        alert.addTextField()
-        
-        let actionOK = UIAlertAction(title: "OK", style: .default) { [unowned self] _ in
-            // date
-            self.tableView.reloadData()
+        if asteroids.count == 0 {
+            addActivityIndicator()
+            parseJSON()
+            tableView.reloadData()
         }
-        let actionCancel = UIAlertAction(title: "Отмена", style: .cancel)
-        alert.addAction(actionOK)
-        alert.addAction(actionCancel)
         
-        present(alert, animated: true)
     }
     
-    
-    @objc func filterObject() {
-        let filterView = FilterViewController()
-        navigationController?.pushViewController(filterView, animated: true)
-        
-//        if filterView.switchDanger.isOn {
-//            
-//            for item in asteroids {
-//                if item.isPotentiallyHazardousAsteroid == false {
-//                    
-//                    try! self.realm.write({
-//                        self.realm.delete(item)
-//                    })
-//                }
-//            }
-//            print("SwitchOFF")
-//        } else {
-//            print("SwitchOFF")
-//        }
-//        tableView.reloadData()
-    }
-    
-    @objc func updateTableView() {
-        
-        try! realm.write {
-            realm.delete(DataManager.obtainAsters())
-        }
-        addActivityIndicator()
-        parseJSON()
+    override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }
     
-    private func addActivityIndicator() {
-        activityIndicator.center = view.center
-        view.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
-    }
-    
     //MARK: Сохранение в БД
-//
+    
     func saveData(aster: NearEarthObject) {
         
         let nearObject = NearItems()
         nearObject.name = aster.name
-        nearObject.id = Int(aster.id) ?? 0
         nearObject.isPotentiallyHazardousAsteroid = aster.isPotentiallyHazardousAsteroid
+        nearObject.closeApproachDateFull = aster.closeApproachData.first!.closeApproachDateFull
+        nearObject.missDistance = aster.closeApproachData.first!.missDistance.kilometers
+        
+        let max = aster.estimatedDiameter.meters.estimatedDiameterMax
+        let min = aster.estimatedDiameter.meters.estimatedDiameterMin
+        let estimatedDiameter = (min + max)/2
+        nearObject.estimatedDiameter = Int(estimatedDiameter)
         
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -133,8 +89,9 @@ class AsteroidViewController: UIViewController {
         }
     }
     
+    //MARK: Получание данных
+    
     private func parseJSON() {
-        
         let url = "https://api.nasa.gov/neo/rest/v1/feed?start_date=\(dateStart)&end_date=\(dateEnd)&api_key=w6JgeuisSazG6hoclBnbZyfmC82QeEXwQIVXLQdw"
         guard let url = URL(string: url) else { return }
         
@@ -148,12 +105,11 @@ class AsteroidViewController: UIViewController {
                 self.result = try JSONDecoder().decode(Objects.self, from: data)
                 
                 if let arrayAllObject = result?.nearEarthObjects.values.flatMap({ $0 }) {
-                
                     for asteroid in arrayAllObject {
                         saveData(aster: asteroid)
                     }
                 }
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [unowned self] in
                     self.tableView.reloadData()
                     self.activityIndicator.stopAnimating()
                 }
@@ -164,6 +120,41 @@ class AsteroidViewController: UIViewController {
         }.resume()
         
     }
+    
+    //MARK: Интерфейс
+    
+    private func createNavigationMenu() {
+        let menu = UIMenu(title: "", children: [
+            UIAction(title: "Фильтр", image: UIImage(named: "filter"), handler: { [unowned self] _ in self.filterObject() }),
+            UIAction(title: "Обновить таблицу", image: UIImage(named: "reload"), handler: { [unowned self] _ in self.updateTableView() })
+        ])
+        let saveButton = UIBarButtonItem(image: UIImage(named: "SF Symbol"), menu: menu)
+        navigationItem.rightBarButtonItem = saveButton
+    }
+    
+    // Фильтр
+    @objc func filterObject() {
+        let filterView = FilterViewController()
+        navigationController?.pushViewController(filterView, animated: true)
+        
+    }
+    //Обновление
+    @objc func updateTableView() {
+        
+        try! self.realm.write { [unowned self]  in
+            self.realm.delete(asteroids)
+            tableView.reloadData()
+        }
+        addActivityIndicator()
+        parseJSON()
+    }
+    
+    private func addActivityIndicator() {
+        activityIndicator.center = view.center
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+    }
+    
     private func createTableView() {
         self.tableView = UITableView(frame: view.bounds, style: .plain)
         tableView.register(UINib(nibName: "TVCell", bundle: nil), forCellReuseIdentifier: identifier)
@@ -173,25 +164,43 @@ class AsteroidViewController: UIViewController {
         self.tableView.separatorStyle = .none
         view.addSubview(tableView)
     }
+    func dateForm(date: String) -> String {
+        let olDateFormatter = DateFormatter()
+        olDateFormatter.dateFormat = "yyyy-MM-dd"
+        let oldDate = olDateFormatter.date(from: date)
+        let convertDateFormatter = DateFormatter()
+        convertDateFormatter.dateFormat = "d MMMM yyyy"
+        convertDateFormatter.locale = Locale(identifier: "ru_RU")
+        
+        return convertDateFormatter.string(from: oldDate!)
+    }
+    
 }
 
-extension AsteroidViewController: UITableViewDelegate, UITableViewDataSource {
+extension AsteroidViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return asteroids.count
-        return DataManager.obtainAsters().count
+        return asteroids.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! TVCell
         
-        cell.nameLabel.text = DataManager.obtainAsters()[indexPath.row].name
-        cell.diameter.text =  "0 метров"
-        cell.approachDateLabel.text = "0 дата"
-        cell.distanceLabel.text = "0 км"
+        let asteroid = asteroids[indexPath.row]
+        cell.nameLabel.text = asteroid.name
+        cell.diameter.text =  "\(asteroid.estimatedDiameter) метров"
         
-        if DataManager.obtainAsters()[indexPath.row].isPotentiallyHazardousAsteroid! {
+        
+        let date = dateForm(date: asteroid.closeApproachDateFull)
+        cell.approachDateLabel.text = "\(date)"
+        
+        
+        let doubleDistance = Double(asteroid.missDistance)
+        let kilometers = String(format: "%.0f", doubleDistance!)
+        let separatated = separatedNumber(Int(kilometers)!)
+        cell.distanceLabel.text = "\(separatated) км"
+        
+        if asteroids[indexPath.row].isPotentiallyHazardousAsteroid! {
             cell.isHazardousLabel.text = "Опасен"
             cell.isHazardousLabel.textColor = .red
             cell.imageAsteroid.image = UIImage(named: "big")
@@ -202,17 +211,17 @@ extension AsteroidViewController: UITableViewDelegate, UITableViewDataSource {
             cell.imageAsteroid.image = UIImage(named: "small")
             cell.asteroidImage.image = UIImage(named: "smallA")
         }
-        
-        
-        
         cell.indexPath = indexPath.row
+        tag = indexPath.row
         
-        cell.completionHandler  = { index in
-            
-            return DataManager.obtainAsters()[index]
-            
+        cell.completionHandler  = { [unowned self] index in
+            return self.asteroids[index]
         }
         
+        cell.deleteHandler = {
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.reloadData()
+        }
         
         return cell
     }
@@ -223,22 +232,22 @@ extension AsteroidViewController: UITableViewDelegate, UITableViewDataSource {
         return 1
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if DataManager.obtainAsters().count == 0 {
+        if asteroids.count == 0 {
             return "Идет загрузка..."
         }
-        return "Найдено \(DataManager.obtainAsters().count) астероидов"
+        return "Найдено \(asteroids.count) астероидов"
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-}
-extension UIButton {
-    func pulsate() {
-        let pulse = CASpringAnimation(keyPath: "transform.scale")
-        pulse.fromValue = 0.90
-        pulse.toValue = 1
-        layer.add(pulse, forKey: nil)
+    func separatedNumber(_ number: Any) -> String {
+        guard let itIsANumber = number as? NSNumber else { return "Not a number" }
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.groupingSeparator = " "
+        formatter.decimalSeparator = ","
+        return formatter.string(from: itIsANumber)!
     }
 }
 

@@ -14,8 +14,10 @@ class TVCell: UITableViewCell {
     
     var indexPath: Int?
     let destoyVC = DestructionViewController()
+    let asteroidVC = AsteroidViewController()
     
     var completionHandler: ((Int) -> (NearItems))?
+    var deleteHandler: (() -> ())? = nil
     
     @IBOutlet weak var backgroundCell: UIView!
     @IBOutlet weak var imageAsteroid: UIImageView!
@@ -30,8 +32,6 @@ class TVCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupDesign()
-        
-        
     }
     
     private func setupDesign() {
@@ -52,30 +52,17 @@ class TVCell: UITableViewCell {
         sender.tag = result
         
         let asteroid = completionHandler!(result)
-        print(asteroid.name)
         destoyVC.addArrayObject(nearAster: asteroid)
-        
-    }
-    
-    func dateForm(date: String) -> String {
-        let olDateFormatter = DateFormatter()
-        olDateFormatter.dateFormat = "yyyy-MM-dd"
-        let oldDate = olDateFormatter.date(from: date)
-        let convertDateFormatter = DateFormatter()
-        convertDateFormatter.dateFormat = "d MMMM yyyy"
-        convertDateFormatter.locale = Locale(identifier: "ru_RU")
-        
-        return convertDateFormatter.string(from: oldDate!)
-    }
-}
 
-extension UIImageView {
-    
-    func roundCorners(_ corners: UIRectCorner, radius: Double) {
-            let maskPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-            let shape = CAShapeLayer()
-            shape.path = maskPath.cgPath
-            layer.mask = shape
+        let realm = try! Realm()
+        try! realm.write {
+            realm.delete(asteroid)
+            deleteHandler?()
+            asteroidVC.tableView.reloadData()
+        }
+        
+        
+        
     }
 }
 

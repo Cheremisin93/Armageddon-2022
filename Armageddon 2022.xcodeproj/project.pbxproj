@@ -12,14 +12,16 @@
 		EF084F33280DEEDE00F86DDC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF084F32280DEEDE00F86DDC /* SceneDelegate.swift */; };
 		EF084F3A280DEEDF00F86DDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF084F39280DEEDF00F86DDC /* Assets.xcassets */; };
 		EF084F3D280DEEDF00F86DDC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF084F3B280DEEDF00F86DDC /* LaunchScreen.storyboard */; };
+		EF2367CE283E493200013491 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2367CD283E493200013491 /* Extensions.swift */; };
 		EF27D72928134208004D5B80 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF27D72828134208004D5B80 /* FilterViewController.swift */; };
 		EF2BEF25280ECDF200C7AC95 /* AsteroidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BEF24280ECDF200C7AC95 /* AsteroidViewController.swift */; };
 		EF2BEF27280ECE0900C7AC95 /* DestructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BEF26280ECE0900C7AC95 /* DestructionViewController.swift */; };
+		EF4B00B628313EEC001630F6 /* DestroyItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4B00B528313EEC001630F6 /* DestroyItems.swift */; };
+		EF9E66DB283EAD510098CF20 /* Untitled.mov in Resources */ = {isa = PBXBuildFile; fileRef = EF9E66DA283EAD510098CF20 /* Untitled.mov */; };
 		EF9EB68B28114FFA0027C2BF /* TVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9EB68A28114FFA0027C2BF /* TVCell.swift */; };
 		EFA985C82812AD7B00293721 /* TVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFA985C72812AD7B00293721 /* TVCell.xib */; };
 		EFDD2E82280FF36500863458 /* Asteroid.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD2E81280FF36500863458 /* Asteroid.swift */; };
-		EFECA173282C25C6002A3741 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFECA172282C25C6002A3741 /* DataManager.swift */; };
-		EFECA175282C2786002A3741 /* DataModel.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFECA174282C2786002A3741 /* DataModel.swift.swift */; };
+		EFECA175282C2786002A3741 /* NearItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFECA174282C2786002A3741 /* NearItems.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,14 +33,16 @@
 		EF084F39280DEEDF00F86DDC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EF084F3C280DEEDF00F86DDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EF084F3E280DEEDF00F86DDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EF2367CD283E493200013491 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EF27D72828134208004D5B80 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		EF2BEF24280ECDF200C7AC95 /* AsteroidViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidViewController.swift; sourceTree = "<group>"; };
 		EF2BEF26280ECE0900C7AC95 /* DestructionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestructionViewController.swift; sourceTree = "<group>"; };
+		EF4B00B528313EEC001630F6 /* DestroyItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestroyItems.swift; sourceTree = "<group>"; };
+		EF9E66DA283EAD510098CF20 /* Untitled.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = Untitled.mov; path = Image/Untitled.mov; sourceTree = "<group>"; };
 		EF9EB68A28114FFA0027C2BF /* TVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCell.swift; sourceTree = "<group>"; };
 		EFA985C72812AD7B00293721 /* TVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVCell.xib; sourceTree = "<group>"; };
 		EFDD2E81280FF36500863458 /* Asteroid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asteroid.swift; sourceTree = "<group>"; };
-		EFECA172282C25C6002A3741 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		EFECA174282C2786002A3741 /* DataModel.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift.swift; sourceTree = "<group>"; };
+		EFECA174282C2786002A3741 /* NearItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearItems.swift; sourceTree = "<group>"; };
 		FD0F3BFA2AC709079F8FDCAC /* Pods-Armageddon 2022.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Armageddon 2022.release.xcconfig"; path = "Target Support Files/Pods-Armageddon 2022/Pods-Armageddon 2022.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				EF084F2F280DEEDE00F86DDC /* Armageddon 2022 */,
+				EF9E66DA283EAD510098CF20 /* Untitled.mov */,
 				EF084F2E280DEEDE00F86DDC /* Products */,
 				5F5ED0F5DF7EF7AF3026D578 /* Pods */,
 				39D8EAB8F3166930A7BFF9EB /* Frameworks */,
@@ -124,6 +129,7 @@
 				EF2BEF24280ECDF200C7AC95 /* AsteroidViewController.swift */,
 				EF27D72828134208004D5B80 /* FilterViewController.swift */,
 				EF2BEF26280ECE0900C7AC95 /* DestructionViewController.swift */,
+				EF2367CD283E493200013491 /* Extensions.swift */,
 				EF27D72628131569004D5B80 /* Cell */,
 			);
 			path = Controllers;
@@ -133,8 +139,8 @@
 			isa = PBXGroup;
 			children = (
 				EFDD2E81280FF36500863458 /* Asteroid.swift */,
-				EFECA174282C2786002A3741 /* DataModel.swift.swift */,
-				EFECA172282C25C6002A3741 /* DataManager.swift */,
+				EFECA174282C2786002A3741 /* NearItems.swift */,
+				EF4B00B528313EEC001630F6 /* DestroyItems.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -210,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFA985C82812AD7B00293721 /* TVCell.xib in Resources */,
+				EF9E66DB283EAD510098CF20 /* Untitled.mov in Resources */,
 				EF084F3D280DEEDF00F86DDC /* LaunchScreen.storyboard in Resources */,
 				EF084F3A280DEEDF00F86DDC /* Assets.xcassets in Resources */,
 			);
@@ -265,14 +272,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF27D72928134208004D5B80 /* FilterViewController.swift in Sources */,
-				EFECA173282C25C6002A3741 /* DataManager.swift in Sources */,
 				EF9EB68B28114FFA0027C2BF /* TVCell.swift in Sources */,
 				EF084F31280DEEDE00F86DDC /* AppDelegate.swift in Sources */,
 				EF2BEF25280ECDF200C7AC95 /* AsteroidViewController.swift in Sources */,
 				EF2BEF27280ECE0900C7AC95 /* DestructionViewController.swift in Sources */,
+				EF2367CE283E493200013491 /* Extensions.swift in Sources */,
 				EFDD2E82280FF36500863458 /* Asteroid.swift in Sources */,
 				EF084F33280DEEDE00F86DDC /* SceneDelegate.swift in Sources */,
-				EFECA175282C2786002A3741 /* DataModel.swift.swift in Sources */,
+				EFECA175282C2786002A3741 /* NearItems.swift in Sources */,
+				EF4B00B628313EEC001630F6 /* DestroyItems.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,8 +423,10 @@
 				DEVELOPMENT_TEAM = TMH7W47KB5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Armageddon 2022/Resource/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Armagedon;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -444,8 +454,10 @@
 				DEVELOPMENT_TEAM = TMH7W47KB5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Armageddon 2022/Resource/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Armagedon;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
