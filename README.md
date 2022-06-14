@@ -8,7 +8,7 @@
 - Realm, 
 - Многопоточность DispatchQueue
 - Сетевой слой URLSession
-- Програмный UI + Xib
+- Программный UI + Xib
 
 Для сборки вам потребуется: 
 pod 'RealmSwift', '~>10'
